@@ -271,3 +271,10 @@ a[href^="tel:"] { text-decoration: none; }
 ::selection {
   background: color-mix(in srgb, var(--color-brand-primary) 20%, transparent);
 }
+
+/* ═══════ MOBILE STICKY BAR COMPENSATION ═══════ */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+}
