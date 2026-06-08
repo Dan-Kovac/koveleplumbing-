@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
+import { capture } from '@/lib/posthog'
 
 interface MiniReview {
   name: string
@@ -67,6 +68,11 @@ export function ContactSplit({
       })
       if (!res.ok) throw new Error('Form submission failed')
       setSubmitted(true)
+      // Track in PostHog
+      capture('form_submitted_callback', {
+        source_page: pagePath,
+        referrer_page: referrerPath,
+      })
       // Track form submission in GA4 with page attribution
       if (typeof window !== 'undefined' && (window as any).gtag) {
         ;(window as any).gtag('event', 'form_submit', {
