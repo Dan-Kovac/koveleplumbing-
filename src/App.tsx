@@ -5,7 +5,7 @@ import { LocationPage } from '@/pages/LocationPage'
 import { LOCATIONS } from '@/pages/locations/data'
 import { ClickToCallTracker } from '@/components/tracking/ClickToCallTracker'
 import { PageViewTracker } from '@/components/tracking/PageViewTracker'
-import { MobileStickyBar } from '@/components/tracking/MobileStickyBar'
+import { MobileCallButton } from '@/components/tracking/MobileCallButton'
 
 // Lazy-load pages for code splitting
 const Home = lazy(() => import('@/pages/Home'))
@@ -42,7 +42,7 @@ export default function App() {
         <ScrollToTop />
         <PageViewTracker />
         <ClickToCallTracker />
-        <MobileStickyBar />
+        <MobileCallButton />
         <Suspense
           fallback={
             <div className="flex min-h-screen items-center justify-center">
