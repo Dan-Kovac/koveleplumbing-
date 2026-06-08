@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+/* ═══════ SELF-HOSTED FONTS ═══════ */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/*
+ * KOVELE PLUMBING — Clean Professional Theme
+ * Blue: #3d9be9 — the true Kovele blue (accent, links, text highlights)
+ * Burnt orange: #c2410c — CTAs, high-contrast action colour
+ * Foundation: white, photography, typography
+ */
+
+@theme {
+  --color-brand-primary: #3d9be9;
+  --color-brand-secondary: #2780c8;
+  --color-brand-accent: #c2410c;
+  --color-brand-accent-hover: #a3360a;
+  --color-brand-gold: #DAA520;
+  --color-brand-muted: #f0f6fd;
+  --color-brand-foreground: #ffffff;
+
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8fafb;
+  --color-surface-dark: #0c1f36;
+
+  --color-text-DEFAULT: #3b4559;
+  --color-text-heading: #0f1a2a;
+  --color-text-muted: #6b7a8d;
+  --color-text-inverse: #f9fafb;
+
+  --color-border: #e2e8f0;
+
+  --color-gradient-from: #0c1f36;
+  --color-gradient-via: #1a4a7a;
+  --color-gradient-to: #3d9be9;
+
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --ease-reveal: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ═══════ BASE ═══════ */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-DEFAULT);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { min-height: 100svh; }
+html { scroll-behavior: smooth; }
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--color-text-heading);
+  }
+}
+
+a[href^="tel:"] { text-decoration: none; }
+
+/* ═══════ GRADIENT TEXT ═══════ */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════ MESH GRADIENT BACKGROUNDS ═══════ */
+.bg-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, var(--color-gradient-from), transparent),
+    radial-gradient(ellipse 60% 60% at 80% 20%, var(--color-gradient-via), transparent),
+    radial-gradient(ellipse 50% 80% at 50% 80%, color-mix(in srgb, var(--color-gradient-to) 60%, transparent), transparent),
+    var(--color-brand-primary);
+}
+
+.bg-mesh-dark {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, color-mix(in srgb, var(--color-gradient-from) 30%, #050816), transparent),
+    radial-gradient(ellipse 60% 60% at 80% 20%, color-mix(in srgb, var(--color-gradient-via) 20%, #050816), transparent),
+    radial-gradient(ellipse 50% 80% at 50% 80%, color-mix(in srgb, var(--color-gradient-to) 15%, #050816), transparent),
+    #050816;
+}
+
+.bg-mesh-subtle {
+  background:
+    radial-gradient(ellipse 60% 40% at 10% 20%, color-mix(in srgb, var(--color-gradient-from) 6%, transparent), transparent),
+    radial-gradient(ellipse 40% 50% at 90% 80%, color-mix(in srgb, var(--color-gradient-to) 4%, transparent), transparent),
+    var(--color-surface);
+}
+
+/* ═══════ PATTERN BACKGROUNDS ═══════ */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-dot-pattern-light {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-pattern-light {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ═══════ GLASSMORPHISM ═══════ */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ═══════ GLOW ═══════ */
+.glow-accent {
+  box-shadow: 0 4px 20px -4px color-mix(in srgb, var(--color-brand-accent) 40%, transparent);
+}
+
+.glow-primary {
+  box-shadow: 0 0 60px -15px color-mix(in srgb, var(--color-brand-primary) 40%, transparent);
+}
+
+.glow-soft {
+  box-shadow:
+    0 0 15px -3px color-mix(in srgb, var(--color-brand-primary) 15%, transparent),
+    0 0 6px -1px color-mix(in srgb, var(--color-brand-accent) 10%, transparent);
+}
+
+/* ═══════ GRADIENT BORDER ═══════ */
+.gradient-border {
+  background: linear-gradient(135deg, var(--color-gradient-from), var(--color-gradient-via), var(--color-gradient-to));
+  padding: 1px;
+  border-radius: 1rem;
+}
+
+.gradient-border > * {
+  border-radius: calc(1rem - 1px);
+}
+
+/* ═══════ ANIMATED GRADIENT ═══════ */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ═══════ REVIEW TICKER ═══════ */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ═══════ SHIMMER ═══════ */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* ═══════ SNAP SCROLL ═══════ */
+.snap-x-container {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-x-container > * {
+  scroll-snap-align: center;
+}
+
+.snap-x-container::-webkit-scrollbar { display: none; }
+.snap-x-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ═══════ MOBILE-FIRST UTILITIES ═══════ */
+@media (max-width: 640px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+}
+
+/* ═══════ FOCUS STATES ═══════ */
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ═══════ SELECTION ═══════ */
+::selection {
+  background: color-mix(in srgb, var(--color-brand-primary) 20%, transparent);
+}

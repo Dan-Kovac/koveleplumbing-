@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d9be9" />
+    <title>Kovele Plumbing | Melbourne Plumbers You Can Trust</title>
+    <meta name="description" content="Steve and Nick Kovac, father-son plumbers with 40+ years experience serving Melbourne. Blocked drains, gas and hot water, roof plumbing, bathroom renovations. Call 0418 340 501." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kovele Plumbing" />
+    <meta property="og:image" content="https://koveleplumbing.com.au/images/steve-kovac-arms-crossed.webp" />
+    <meta property="og:image:width" content="1600" />
+    <meta property="og:image:height" content="1067" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Preconnect to analytics -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Preload hero image (LCP element) -->
+    <link rel="preload" href="/images/steve-nick-kovele-fleet.webp" as="image" type="image/webp" />
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4R6ZT4HZX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V4R6ZT4HZX');
+
+      // Track click-to-call events with page attribution
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href^="tel:"]');
+        if (link) {
+          gtag('event', 'click_to_call', {
+            event_category: 'engagement',
+            event_label: link.href.replace('tel:', ''),
+            page_path: window.location.pathname,
+            value: 1
+          });
+        }
+      });
+
+      // Track click-to-email events with page attribution
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href^="mailto:"]');
+        if (link) {
+          gtag('event', 'click_to_email', {
+            event_category: 'engagement',
+            event_label: link.href.replace('mailto:', ''),
+            page_path: window.location.pathname
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

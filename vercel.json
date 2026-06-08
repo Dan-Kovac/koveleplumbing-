@@ -1,0 +1,34 @@
+{
+  "redirects": [
+    { "source": "/about-us", "destination": "/about", "statusCode": 301 },
+    { "source": "/about-koveleplumbing", "destination": "/about", "statusCode": 301 },
+    { "source": "/gas-plumber-melbourne", "destination": "/gas-hot-water", "statusCode": 301 },
+    { "source": "/blocked-drain-repair-melbourne", "destination": "/blocked-drains", "statusCode": 301 },
+    { "source": "/roof-plumber-melbourne", "destination": "/roof-plumbing", "statusCode": 301 },
+    { "source": "/general-plumbing-melbourne", "destination": "/general-plumbing", "statusCode": 301 },
+    { "source": "/melbourne-bathroom-renovations", "destination": "/bathroom-renovations", "statusCode": 301 },
+    { "source": "/areas-we-service", "destination": "/services", "statusCode": 301 },
+    { "source": "/careers", "destination": "/about", "statusCode": 301 },
+    { "source": "/carbon-monoxide-testing", "destination": "/gas-hot-water", "statusCode": 301 },
+    { "source": "/bathroom-renovation-tips", "destination": "/blog", "statusCode": 301 },
+    { "source": "/fixing-a-blocked-drain", "destination": "/blog", "statusCode": 301 },
+    { "source": "/can-i-call-a-plumber-during-melbournes-stage-four-restrictions", "destination": "/blog", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/((?!assets|images|favicon|sitemap|robots).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ]
+}

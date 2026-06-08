@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /404
+
+Sitemap: https://koveleplumbing.com.au/sitemap.xml
+
+# AI content for LLM consumption
+# See https://llmstxt.org for specification
+LLMsTxt: https://koveleplumbing.com.au/llms.txt

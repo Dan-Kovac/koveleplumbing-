@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "cruzey": {
+      "command": "node",
+      "args": ["/Users/danielkovac/Desktop/Dashy/cruzey-mcp/src/index.js"],
+      "env": {
+        "CRUZEY_BASE_URL": "http://localhost:5180",
+        "CRUZEY_DEFAULT_WORKSPACE": "kovele",
+        "CRUZEY_WORKSPACES": "{\"cruzey\":\"dsh_80980ea065ceb17a291d1c120a722f5a27416e2e4d0df1f93d0c7b0ef9919870\",\"kovele\":\"dsh_52b4850d42b09384bbe418e82e8bd2a67ce8b772f27cc649663bc03a465374c1\"}",
+        "CRUZEY_PATH_MAP": "{\"/Users/danielkovac/Desktop/Dashy\":\"cruzey\",\"/Users/danielkovac/Desktop/Roadmap Digital/Clients/Kovele\":\"kovele\",\"/Users/danielkovac/Desktop/Roadmap Digital/Clients/Compass\":\"compass\"}"
+      }
+    }
+  }
+}
