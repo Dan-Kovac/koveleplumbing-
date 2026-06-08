@@ -71,3 +71,5 @@ export default defineConfig([
   },
 ])
 ```
+
+<!-- deploy pipeline test: 2026-06-08T08:06:33Z -->
