@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { lazy, Suspense, useEffect } from 'react'
 import { LocationPage } from '@/pages/LocationPage'
@@ -82,6 +82,11 @@ export default function App() {
             {/* Utility pages */}
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+
+            {/* Locale route that was never built — redirect to home instead of
+                404ing (PostHog showed real traffic landing on /zh). */}
+            <Route path="/zh" element={<Navigate to="/" replace />} />
+            <Route path="/zh/*" element={<Navigate to="/" replace />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
