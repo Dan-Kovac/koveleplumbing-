@@ -1,4 +1,4 @@
-import { Phone, PhoneCall } from 'lucide-react'
+import { PhoneCall } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/sections/Navbar'
 import { Footer } from '@/components/sections/Footer'
@@ -103,15 +103,6 @@ export function PageLayout({ children }: PageLayoutProps) {
           },
         ]}
       />
-
-      {/* Mobile Floating Call Button */}
-      <a
-        href="tel:0418340501"
-        className="fixed bottom-4 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-accent text-white shadow-lg transition-transform hover:scale-105 md:hidden"
-        aria-label="Call Kovele Plumbing"
-      >
-        <Phone className="h-6 w-6" />
-      </a>
     </>
   )
 }

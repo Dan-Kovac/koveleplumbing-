@@ -1,19 +1,16 @@
-import { useLocation } from 'react-router-dom'
 import { Phone } from 'lucide-react'
-import { capture } from '@/lib/posthog'
 import { cn } from '@/lib/utils'
 
+/**
+ * Persistent mobile-only floating call button.
+ * Tracking is handled globally by ClickToCallTracker via the `data-cta`
+ * attribute, so there's no per-click handler here (avoids double-counting).
+ */
 export function MobileCallButton() {
-  const { pathname } = useLocation()
-
-  const handleCall = () => {
-    capture('floating_call_clicked', { page_path: pathname, device: 'mobile' })
-  }
-
   return (
     <a
       href="tel:0418340501"
-      onClick={handleCall}
+      data-cta="floating_button"
       aria-label="Call Steve"
       className={cn(
         'fixed bottom-5 right-5 z-50 md:hidden',

@@ -136,7 +136,7 @@ export function ContactSplit({
 
             <div className="mt-8 space-y-6">
               {phone && (
-                <a href={`tel:${phone.replace(/\s/g, '')}`} className="flex items-center gap-4 text-text-DEFAULT transition hover:text-brand-primary">
+                <a href={`tel:${phone.replace(/\s/g, '')}`} data-cta="contact_details" className="flex items-center gap-4 text-text-DEFAULT transition hover:text-brand-primary">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-muted">
                     <Phone className="h-5 w-5 text-brand-primary" />
                   </div>
@@ -177,34 +177,51 @@ export function ContactSplit({
                     </p>
                   </div>
                 ) : (
-                  <form className="space-y-4" onSubmit={handleSubmit}>
-                    <div className="grid gap-4 sm:grid-cols-2">
+                  <>
+                    {/* Call-first: the data shows visitors overwhelmingly prefer
+                        to call. Lead with the call; the form is the fallback. */}
+                    <a
+                      href="tel:0418340501"
+                      data-cta="contact_form_call"
+                      className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-lg bg-brand-accent px-5 text-base font-semibold text-white shadow-sm transition hover:bg-brand-accent-hover"
+                    >
+                      <Phone className="h-5 w-5" />
+                      Call Steve now — 0418 340 501
+                    </a>
+                    <div className="my-5 flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-text-muted">
+                      <span className="h-px flex-1 bg-border" />
+                      Or get a callback
+                      <span className="h-px flex-1 bg-border" />
+                    </div>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
                       <div className="space-y-2">
                         <Label htmlFor="name">Name</Label>
                         <Input id="name" name="name" placeholder="Your name" required />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" name="email" type="email" placeholder="you@example.com" />
+                        <Label htmlFor="phone">Phone</Label>
+                        <Input id="phone" name="phone" type="tel" placeholder="0400 000 000" required />
                       </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone</Label>
-                      <Input id="phone" name="phone" type="tel" placeholder="0400 000 000" required />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea id="message" name="message" rows={4} placeholder="What do you need help with?" />
-                    </div>
-                    <Button
-                      type="submit"
-                      size="lg"
-                      disabled={submitting}
-                      className="w-full bg-brand-accent text-white hover:bg-brand-accent-hover"
-                    >
-                      {submitting ? 'Sending...' : ctaLabel}
-                    </Button>
-                  </form>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">
+                          What do you need? <span className="font-normal text-text-muted">(optional)</span>
+                        </Label>
+                        <Textarea id="message" name="message" rows={3} placeholder="e.g. blocked drain, hot water not working…" />
+                      </div>
+                      <Button
+                        type="submit"
+                        size="lg"
+                        variant="outline"
+                        disabled={submitting}
+                        className="w-full border-brand-primary/40 text-brand-primary hover:bg-brand-muted hover:text-brand-primary"
+                      >
+                        {submitting ? 'Sending…' : ctaLabel}
+                      </Button>
+                      <p className="text-center text-xs text-text-muted">
+                        Steve calls back within 2 hours during business hours.
+                      </p>
+                    </form>
+                  </>
                 )}
               </CardContent>
             </Card>

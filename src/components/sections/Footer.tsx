@@ -85,6 +85,7 @@ export function Footer({
                 <a
                   key={social.label}
                   href={social.href}
+                  data-cta={social.href.startsWith('tel:') ? 'footer_call' : undefined}
                   aria-label={social.label}
                   className="flex h-11 w-11 items-center justify-center text-text-inverse/70 transition hover:text-white"
                 >
