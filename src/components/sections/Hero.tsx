@@ -32,6 +32,8 @@ const fadeUp = {
   }),
 }
 
+const isTel = (href: string) => href.startsWith('tel:')
+
 function renderTitle(title: string, highlightWord?: string) {
   if (!highlightWord) return title
   const idx = title.toLowerCase().indexOf(highlightWord.toLowerCase())
@@ -100,16 +102,17 @@ export function Hero({
                 <motion.div custom={3} variants={fadeUp} className="mt-8 flex items-center gap-3">
                   {primaryCta && (
                     <Button size="lg" className="glow-accent flex-1 rounded-lg bg-brand-accent px-5 text-white hover:bg-brand-accent-hover sm:flex-none sm:px-7" asChild>
-                      <a href={primaryCta.href}>
+                      <a href={primaryCta.href} data-cta="hero_primary">
+                        {isTel(primaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
                         {primaryCta.label}
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                        {!isTel(primaryCta.href) && <ArrowRight className="ml-2 h-4 w-4" />}
                       </a>
                     </Button>
                   )}
                   {secondaryCta && (
                     <Button size="lg" variant="outline" className="flex-1 rounded-lg border-white/20 text-white backdrop-blur-sm hover:bg-white/10 sm:flex-none" asChild>
-                      <a href={secondaryCta.href}>
-                        <Phone className="mr-2 h-4 w-4" />
+                      <a href={secondaryCta.href} data-cta="hero_secondary">
+                        {isTel(secondaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
                         {secondaryCta.label}
                       </a>
                     </Button>
@@ -210,12 +213,18 @@ export function Hero({
           <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {primaryCta && (
               <Button size="lg" className="glow-accent rounded-lg bg-brand-accent px-7 text-white hover:bg-brand-accent-hover" asChild>
-                <a href={primaryCta.href}>{primaryCta.label}</a>
+                <a href={primaryCta.href} data-cta="hero_primary">
+                  {isTel(primaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
+                  {primaryCta.label}
+                </a>
               </Button>
             )}
             {secondaryCta && (
               <Button size="lg" variant="outline" className="rounded-lg border-white/25 text-white hover:bg-white/10" asChild>
-                <a href={secondaryCta.href}>{secondaryCta.label}</a>
+                <a href={secondaryCta.href} data-cta="hero_secondary">
+                  {isTel(secondaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
+                  {secondaryCta.label}
+                </a>
               </Button>
             )}
           </motion.div>

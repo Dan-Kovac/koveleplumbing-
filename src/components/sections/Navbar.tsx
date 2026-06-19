@@ -50,6 +50,7 @@ export function Navbar({
             {topbar.phone && (
               <a
                 href={`tel:${topbar.phone.replace(/\s/g, '')}`}
+                data-cta="nav_topbar"
                 className="flex items-center gap-1.5 py-2 text-xs font-medium text-white/90 transition-colors hover:text-white"
               >
                 <Phone className="h-3 w-3" />
@@ -96,7 +97,7 @@ export function Navbar({
                 className="hidden bg-brand-accent text-white shadow-sm hover:bg-brand-accent/90 sm:inline-flex"
                 asChild
               >
-                <a href={cta.href}>
+                <a href={cta.href} data-cta="nav_cta">
                   <Phone className="mr-1.5 h-4 w-4" />
                   {cta.label}
                 </a>
@@ -129,7 +130,7 @@ export function Navbar({
                 <div className="mt-6 flex flex-col gap-3 border-t border-gray-100 pt-6">
                   {cta && (
                     <Button className="w-full bg-brand-accent text-white hover:bg-brand-accent/90" size="lg" asChild>
-                      <a href={cta.href}>
+                      <a href={cta.href} data-cta="nav_mobile_cta">
                         <Phone className="mr-1.5 h-4 w-4" />
                         {cta.label}
                       </a>
@@ -137,6 +138,7 @@ export function Navbar({
                   )}
                   <a
                     href="tel:0418340501"
+                    data-cta="nav_mobile"
                     className="flex min-h-[48px] items-center justify-center gap-2 rounded-lg border border-gray-200 text-sm font-semibold text-surface-dark transition hover:bg-gray-50"
                   >
                     <Phone className="h-4 w-4" />

@@ -143,8 +143,8 @@ export default function Home() {
         badge="Melbourne's trusted father-son plumbers"
         title="Melbourne plumbers you can trust to do the job right."
         subtitle="Steve and Nick Kovac. Forty years of fixing Melbourne's plumbing. Fair prices, quality work, real people."
-        primaryCta={{ label: 'Request a Callback', href: '/contact' }}
-        secondaryCta={{ label: 'Call Now', href: 'tel:0418340501' }}
+        primaryCta={{ label: 'Call Steve Now', href: 'tel:0418340501' }}
+        secondaryCta={{ label: 'Request a Callback', href: '/contact' }}
         splitImage="/images/steve-nick-kovele-fleet.webp"
         splitImageAlt="Steve and Nick Kovac, Kovele Plumbing"
         trustLine="4.9★ from 246 verified reviews on Google & Service Seeking"
@@ -197,8 +197,8 @@ export default function Home() {
         }}
         availabilityText="Steve is available now"
         responseText="Average callback time: under 2 hours during business hours"
-        cta={{ label: 'Request a Callback', href: '/contact' }}
-        secondaryCta={{ label: 'Call Now', href: 'tel:0418340501' }}
+        cta={{ label: 'Call Steve Now', href: 'tel:0418340501' }}
+        secondaryCta={{ label: 'Request a Callback', href: '/contact' }}
       />
     </PageLayout>
   )

@@ -17,6 +17,8 @@ interface CTABannerProps {
   className?: string
 }
 
+const isTel = (href: string) => href.startsWith('tel:')
+
 export function CTABanner({
   title,
   subtitle,
@@ -83,8 +85,8 @@ export function CTABanner({
                       className="glow-accent w-full rounded-lg bg-brand-accent px-7 text-white hover:bg-brand-accent-hover sm:w-auto"
                       asChild
                     >
-                      <a href={cta.href}>
-                        <MessageSquare className="mr-2 h-4 w-4" />
+                      <a href={cta.href} data-cta="cta_banner_primary">
+                        {isTel(cta.href) ? <Phone className="mr-2 h-4 w-4" /> : <MessageSquare className="mr-2 h-4 w-4" />}
                         {cta.label}
                       </a>
                     </Button>
@@ -95,8 +97,8 @@ export function CTABanner({
                         className="w-full rounded-lg border-white/30 text-white hover:bg-white/10 sm:w-auto"
                         asChild
                       >
-                        <a href={secondaryCta.href}>
-                          <Phone className="mr-2 h-4 w-4" />
+                        <a href={secondaryCta.href} data-cta="cta_banner_secondary">
+                          {isTel(secondaryCta.href) ? <Phone className="mr-2 h-4 w-4" /> : <MessageSquare className="mr-2 h-4 w-4" />}
                           {secondaryCta.label}
                         </a>
                       </Button>
@@ -129,14 +131,14 @@ export function CTABanner({
                     {subtitle && <p className="mx-auto mt-3 max-w-lg text-base text-white/75">{subtitle}</p>}
                     <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                       <Button size="lg" className="glow-accent rounded-lg bg-brand-accent px-7 text-white hover:bg-brand-accent-hover" asChild>
-                        <a href={cta.href}>
+                        <a href={cta.href} data-cta="cta_banner_primary">
                           <Phone className="mr-2 h-4 w-4" />
                           {cta.label}
                         </a>
                       </Button>
                       {secondaryCta && (
                         <Button size="lg" variant="outline" className="rounded-lg border-white/30 text-white hover:bg-white/10" asChild>
-                          <a href={secondaryCta.href}>
+                          <a href={secondaryCta.href} data-cta="cta_banner_secondary">
                             {secondaryCta.label}
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </a>
@@ -168,14 +170,14 @@ export function CTABanner({
             {subtitle && <p className="mx-auto mt-3 max-w-lg text-base text-white/75">{subtitle}</p>}
             <div className="mt-8 flex items-center justify-center gap-3">
               <Button size="lg" className="glow-accent flex-1 rounded-lg bg-brand-accent px-5 text-white hover:bg-brand-accent-hover sm:flex-none sm:px-7" asChild>
-                <a href={cta.href}>
+                <a href={cta.href} data-cta="cta_banner_primary">
                   <Phone className="mr-2 h-4 w-4" />
                   {cta.label}
                 </a>
               </Button>
               {secondaryCta && (
                 <Button size="lg" variant="outline" className="flex-1 rounded-lg border-white/30 text-white hover:bg-white/10 sm:flex-none" asChild>
-                  <a href={secondaryCta.href}>
+                  <a href={secondaryCta.href} data-cta="cta_banner_secondary">
                     {secondaryCta.label}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
