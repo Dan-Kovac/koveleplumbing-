@@ -1,7 +1,12 @@
 # Kovele Plumbing — "Local Legend" Design Direction (July 2026)
 
-**Date:** 2026-07-11 · **Status:** CONCEPT — awaiting Dan's approval (evolves two locked
-design-language rules, see "Deltas" below).
+**Date:** 2026-07-11 · **Status:** PARTIALLY APPROVED (Dan, 2026-07-11): the cut-out
+photography technique is approved; the "Local Legend" copy/persona concept is
+REJECTED as too wanky. Rework as a design-led direction — look and feel carries it,
+copy stays in the site's existing honest voice. Dan wants Steve + Nick brought
+together as a duo composition; blocked on a proper portrait photo of Nick (his only
+real photo is a wide fleet scene that defeats clean auto-matting — see shot list §6,
+item 1).
 **Live prototype:** Claude artifact "Kovele — Local Legend design concept" (hero built
 with the real processed cut-out + real brand tokens).
 **Companion plan:** `plan/conversion-seo-plan-2026-07.md` (this direction slots into its
