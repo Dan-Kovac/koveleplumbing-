@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -61,18 +61,11 @@ const CONTACT_FAQS = [
 export default function Contact() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Contact Kovele Plumbing | Get a Quote | Call 0418 340 501</title>
-        <meta
-          name="description"
-          content="Contact Kovele Plumbing for a free quote. Call Steve on 0418 340 501 or fill in the form. Based in Bundoora, servicing all of Melbourne."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/contact" />
-        <meta property="og:title" content="Contact Kovele Plumbing | Get a Quote | Call 0418 340 501" />
-        <meta property="og:description" content="Contact Kovele Plumbing for a free quote. Call Steve on 0418 340 501 or fill in the form. Based in Bundoora, servicing all of Melbourne." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/contact" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Contact Kovele Plumbing | Get a Quote | Call 0418 340 501"
+        description="Contact Kovele Plumbing for a free quote. Call Steve on 0418 340 501 or fill in the form. Based in Bundoora, servicing all of Melbourne."
+        canonical="/contact"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

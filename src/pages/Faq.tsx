@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -91,18 +91,11 @@ const FAQS = [
 export default function Faq() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Frequently Asked Questions | Kovele Plumbing Melbourne</title>
-        <meta
-          name="description"
-          content="Answers to common plumbing questions. Pricing, emergency service, hot water systems, bathroom renovations, and more. Kovele Plumbing Melbourne."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/faq" />
-        <meta property="og:title" content="Frequently Asked Questions | Kovele Plumbing Melbourne" />
-        <meta property="og:description" content="Answers to common plumbing questions. Pricing, emergency service, hot water systems, bathroom renovations, and more. Kovele Plumbing Melbourne." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/faq" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Frequently Asked Questions | Kovele Plumbing Melbourne"
+        description="Answers to common plumbing questions. Pricing, emergency service, hot water systems, bathroom renovations, and more. Kovele Plumbing Melbourne."
+        canonical="/faq"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

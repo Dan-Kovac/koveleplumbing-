@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -11,6 +11,7 @@ import {
   Home as HomeIcon,
   Wrench,
   Bath,
+  Siren,
 } from 'lucide-react'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Hero } from '@/components/sections/Hero'
@@ -83,6 +84,12 @@ const SERVICES = [
     href: '/bathroom-renovations',
     icon: <Bath className="h-8 w-8" />,
   },
+  {
+    title: 'Emergency Plumber',
+    excerpt: 'Burst pipes and flooding. Steve answers 24/7.',
+    href: '/emergency-plumber',
+    icon: <Siren className="h-8 w-8" />,
+  },
 ]
 
 export function LocationPage({ data }: { data: LocationData }) {
@@ -123,21 +130,12 @@ export function LocationPage({ data }: { data: LocationData }) {
 
   return (
     <PageLayout>
-      <Helmet>
-        <title>Plumber {data.suburb} | Trusted Local Plumber | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content={`Your trusted plumber in ${data.suburb}. Based in Bundoora, ${data.driveTime} from ${data.suburb}. ${data.jobCount} jobs completed. Call Steve on 0418 340 501.`}
-        />
-        <link
-          rel="canonical"
-          href={`https://koveleplumbing.com.au/${data.slug}`}
-        />
-        <meta property="og:title" content={`Plumber ${data.suburb} | Trusted Local Plumber | Kovele Plumbing`} />
-        <meta property="og:description" content={`Your trusted plumber in ${data.suburb}. Based in Bundoora, ${data.driveTime} from ${data.suburb}. ${data.jobCount} jobs completed. Call Steve on 0418 340 501.`} />
-        <meta property="og:url" content={`https://koveleplumbing.com.au/${data.slug}`} />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title={`Plumber ${data.suburb} | Trusted Local Plumber | Kovele Plumbing`}
+        description={`Your trusted plumber in ${data.suburb}. Based in Bundoora, ${data.driveTime} from ${data.suburb}. ${data.jobCount} jobs completed. Call Steve on 0418 340 501.`}
+        canonical={`/${data.slug}`}
+        image={data.image}
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),
@@ -195,7 +193,10 @@ export function LocationPage({ data }: { data: LocationData }) {
 
       <Testimonials
         title={`What ${data.suburb} customers say`}
-        testimonials={toTestimonials(PAGE_REVIEWS)}
+        testimonials={[
+          { ...data.testimonial, rating: 5 },
+          ...toTestimonials(PAGE_REVIEWS),
+        ]}
         variant="with-rating"
       />
 

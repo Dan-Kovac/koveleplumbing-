@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Hero } from '@/components/sections/Hero'
 import { CTABanner } from '@/components/sections/CTABanner'
@@ -53,18 +53,11 @@ function BlogCard({ post }: { post: BlogPostFallback }) {
 export default function Blog() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Plumbing Tips & Advice | Kovele Plumbing Blog | Melbourne</title>
-        <meta
-          name="description"
-          content="Plumbing tips, guides, and advice from Steve Kovac. 40 years of experience shared in plain English. Kovele Plumbing Melbourne."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/blog" />
-        <meta property="og:title" content="Plumbing Tips & Advice | Kovele Plumbing Blog | Melbourne" />
-        <meta property="og:description" content="Plumbing tips, guides, and advice from Steve Kovac. 40 years of experience shared in plain English. Kovele Plumbing Melbourne." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/blog" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Plumbing Tips & Advice | Kovele Plumbing Blog | Melbourne"
+        description="Plumbing tips, guides, and advice from Steve Kovac. 40 years of experience shared in plain English. Kovele Plumbing Melbourne."
+        canonical="/blog"
+      />
 
       <Hero
         variant="minimal"

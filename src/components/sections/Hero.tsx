@@ -119,6 +119,14 @@ export function Hero({
                   )}
                 </motion.div>
               )}
+              {primaryCta && isTel(primaryCta.href) && (
+                <motion.div custom={3.5} variants={fadeUp} className="mt-4">
+                  <a href={primaryCta.href} data-cta="hero_phone_text" className="inline-flex items-baseline gap-2">
+                    <span className="text-sm text-white/70">Prefer to call?</span>
+                    <span className="font-heading text-2xl font-bold text-brand-gold">0418 340 501</span>
+                  </a>
+                </motion.div>
+              )}
               {trustLine && (
                 <motion.div custom={4} variants={fadeUp} className="mt-4 flex items-center gap-2 sm:mt-6 sm:gap-2.5">
                   <div className="flex shrink-0">

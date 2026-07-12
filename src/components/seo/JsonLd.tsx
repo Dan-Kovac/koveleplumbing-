@@ -12,7 +12,7 @@ export function localBusinessSchema() {
     "description":
       "Father-son plumbing team serving Melbourne for 40+ years. Blocked drains, gas & hot water, roof plumbing, bathroom renovations, and emergency service.",
     "url": "https://koveleplumbing.com.au",
-    "telephone": "0418340501",
+    "telephone": "+61418340501",
     "email": "koveleplumbing5@bigpond.com",
     "image": "https://koveleplumbing.com.au/images/melbourne-plumber-steve-nick-kovac.webp",
     "priceRange": "$$",
@@ -89,7 +89,7 @@ export function serviceSchema(
     "provider": {
       "@type": "Plumber",
       "name": "Kovele Plumbing",
-      "telephone": "0418340501",
+      "telephone": "+61418340501",
       "url": "https://koveleplumbing.com.au",
     },
     "areaServed": {
@@ -126,6 +126,78 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       "item": item.url,
     })),
   }
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Kovele Plumbing",
+    "url": "https://koveleplumbing.com.au",
+    "publisher": {
+      "@type": "Plumber",
+      "name": "Kovele Plumbing",
+      "telephone": "+61418340501",
+      "url": "https://koveleplumbing.com.au",
+    },
+  }
+}
+
+export function articleSchema(article: {
+  title: string
+  description: string
+  url: string
+  image: string
+  datePublished: string
+  dateModified?: string
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article.title,
+    "description": article.description,
+    "image": article.image,
+    "url": article.url,
+    "datePublished": article.datePublished,
+    "dateModified": article.dateModified ?? article.datePublished,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": article.url },
+    "author": {
+      "@type": "Person",
+      "name": "Steve Kovac",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Kovele Plumbing",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://koveleplumbing.com.au/images/kovele-logo.png",
+      },
+    },
+  }
+}
+
+/** Individual Review objects — use on the dedicated reviews page only. */
+export function reviewSchemas(
+  reviews: { name: string; date: string; rating: number; text: string }[],
+) {
+  return reviews.map((r) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": r.name },
+    "datePublished": r.date,
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": r.rating,
+      "bestRating": 5,
+      "worstRating": 1,
+    },
+    "reviewBody": r.text,
+    "itemReviewed": {
+      "@type": "Plumber",
+      "name": "Kovele Plumbing",
+      "url": "https://koveleplumbing.com.au",
+    },
+  }))
 }
 
 /* ------------------------------------------------------------------ */

@@ -1,8 +1,9 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
   breadcrumbSchema,
+  reviewSchemas,
 } from '@/components/seo/JsonLd'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Hero } from '@/components/sections/Hero'
@@ -19,18 +20,12 @@ import {
 export default function Reviews() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Customer Reviews | 246 Five-Star Reviews | Kovele Plumbing Melbourne</title>
-        <meta
-          name="description"
-          content="246 verified reviews from real Melbourne homeowners on Google and Service Seeking. Read what customers say about Steve and Nick Kovac."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/reviews" />
-        <meta property="og:title" content="Customer Reviews | 246 Five-Star Reviews | Kovele Plumbing Melbourne" />
-        <meta property="og:description" content="246 verified reviews from real Melbourne homeowners on Google and Service Seeking. Read what customers say about Steve and Nick Kovac." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/reviews" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Customer Reviews | 246 Five-Star Reviews | Kovele Plumbing Melbourne"
+        description="246 verified reviews from real Melbourne homeowners on Google and Service Seeking. Read what customers say about Steve and Nick Kovac."
+        canonical="/reviews"
+        image="/images/trusted-plumber-melbourne-reviews.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),
@@ -38,6 +33,7 @@ export default function Reviews() {
             { name: "Home", url: "https://koveleplumbing.com.au" },
             { name: "Reviews", url: "https://koveleplumbing.com.au/reviews" },
           ]),
+          ...reviewSchemas(FEATURED_REVIEWS),
         ]}
       />
 

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -63,18 +63,12 @@ const GAS_HOT_WATER_FAQS = [
 export default function GasHotWater() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Gas & Hot Water Systems Melbourne | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content="Licensed gas fitters in Melbourne. Hot water repairs, installations, gas heater servicing. All brands. Rinnai, Rheem, Bosch, Dux. Call Steve on 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/gas-hot-water" />
-        <meta property="og:title" content="Gas & Hot Water Systems Melbourne | Kovele Plumbing" />
-        <meta property="og:description" content="Licensed gas fitters in Melbourne. Hot water repairs, installations, gas heater servicing. All brands. Rinnai, Rheem, Bosch, Dux. Call Steve on 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/gas-hot-water" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Gas & Hot Water Systems Melbourne | Kovele Plumbing"
+        description="Licensed gas fitters in Melbourne. Hot water repairs, installations, gas heater servicing. All brands. Rinnai, Rheem, Bosch, Dux. Call Steve on 0418 340 501."
+        canonical="/gas-hot-water"
+        image="/images/hot-water-system-repair-melbourne.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

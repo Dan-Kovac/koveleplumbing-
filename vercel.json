@@ -12,7 +12,9 @@
     { "source": "/carbon-monoxide-testing", "destination": "/gas-hot-water", "statusCode": 301 },
     { "source": "/bathroom-renovation-tips", "destination": "/blog", "statusCode": 301 },
     { "source": "/fixing-a-blocked-drain", "destination": "/blog", "statusCode": 301 },
-    { "source": "/can-i-call-a-plumber-during-melbournes-stage-four-restrictions", "destination": "/blog", "statusCode": 301 }
+    { "source": "/can-i-call-a-plumber-during-melbournes-stage-four-restrictions", "destination": "/blog", "statusCode": 301 },
+    { "source": "/zh", "destination": "/", "statusCode": 301 },
+    { "source": "/zh/:path*", "destination": "/", "statusCode": 301 }
   ],
   "rewrites": [
     { "source": "/((?!assets|images|favicon|sitemap|robots).*)", "destination": "/index.html" }

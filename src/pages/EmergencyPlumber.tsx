@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -72,18 +72,12 @@ const EMERGENCY_FAQS = [
 export default function EmergencyPlumber() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Emergency Plumber Melbourne 24/7 | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content="Emergency plumber Melbourne. Steve answers 24/7. Burst pipes, flooding, gas leaks, blocked drains. Average response: 60 minutes. Call 0418 340 501 now."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/emergency-plumber" />
-        <meta property="og:title" content="Emergency Plumber Melbourne 24/7 | Kovele Plumbing" />
-        <meta property="og:description" content="Emergency plumber Melbourne. Steve answers 24/7. Burst pipes, flooding, gas leaks, blocked drains. Average response: 60 minutes. Call 0418 340 501 now." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/emergency-plumber" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Emergency Plumber Melbourne 24/7 | Kovele Plumbing"
+        description="Emergency plumber Melbourne. Steve answers 24/7. Burst pipes, flooding, gas leaks, blocked drains. Average response: 60 minutes. Call 0418 340 501 now."
+        canonical="/emergency-plumber"
+        image="/images/emergency-plumber-melbourne-24-7.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

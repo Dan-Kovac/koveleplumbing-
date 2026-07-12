@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -63,18 +63,12 @@ const ROOF_PLUMBING_FAQS = [
 export default function RoofPlumbing() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Roof Plumber Melbourne | Gutters & Leaks | Kovele</title>
-        <meta
-          name="description"
-          content="Melbourne roof plumbing and gutter repairs. Leak detection, downpipe replacement, gutter guards, and roof flashing. Call Steve on 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/roof-plumbing" />
-        <meta property="og:title" content="Roof Plumber Melbourne | Gutters & Leaks | Kovele" />
-        <meta property="og:description" content="Melbourne roof plumbing and gutter repairs. Leak detection, downpipe replacement, gutter guards, and roof flashing. Call Steve on 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/roof-plumbing" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Roof Plumber Melbourne | Gutters & Leaks | Kovele"
+        description="Melbourne roof plumbing and gutter repairs. Leak detection, downpipe replacement, gutter guards, and roof flashing. Call Steve on 0418 340 501."
+        canonical="/roof-plumbing"
+        image="/images/roof-plumber-steve-melbourne.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

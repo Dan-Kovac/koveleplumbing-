@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -17,18 +17,12 @@ import { PAGE_REVIEWS, toTestimonials } from '@/data/reviews'
 export default function About() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>About Us | Melbourne's Father-Son Plumbers | Kovele</title>
-        <meta
-          name="description"
-          content="Meet Steve and Nick Kovac, Melbourne's father-son plumbing team. 40+ years experience, 246 five-star reviews. Based in Bundoora."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/about" />
-        <meta property="og:title" content="About Us | Melbourne's Father-Son Plumbers | Kovele" />
-        <meta property="og:description" content="Meet Steve and Nick Kovac, Melbourne's father-son plumbing team. 40+ years experience, 246 five-star reviews. Based in Bundoora." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/about" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="About Us | Melbourne's Father-Son Plumbers | Kovele"
+        description="Meet Steve and Nick Kovac, Melbourne's father-son plumbing team. 40+ years experience, 246 five-star reviews. Based in Bundoora."
+        canonical="/about"
+        image="/images/steve-kovac-van-portrait.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

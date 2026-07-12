@@ -1,10 +1,18 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
+import {
+  JsonLd,
+  localBusinessSchema,
+  serviceSchema,
+  faqSchema,
+  breadcrumbSchema,
+} from '@/components/seo/JsonLd'
 import {
   Droplets,
   Flame,
   Home as HomeIcon,
   Wrench,
   Bath,
+  Siren,
 } from 'lucide-react'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Hero } from '@/components/sections/Hero'
@@ -66,23 +74,73 @@ const SERVICES = [
     image: '/images/bathroom-renovation-plumber-melbourne.webp',
     imageAlt: 'Bathroom renovation plumbing rough-in by Kovele Plumbing',
   },
+  {
+    title: 'Emergency Plumber',
+    excerpt: 'Burst pipes, flooding, gas leaks. Steve answers 24/7, 60-min response.',
+    href: '/emergency-plumber',
+    icon: <Siren className="h-8 w-8" />,
+    image: '/images/emergency-plumber-melbourne-24-7.webp',
+    imageAlt: 'Emergency plumber Melbourne, available 24/7',
+  },
+]
+
+const SERVICES_FAQS = [
+  {
+    question: 'How do I know which service I need?',
+    answer:
+      "Call Steve and describe the problem. He will tell you exactly what is needed and give you a rough cost estimate over the phone. No obligation.",
+  },
+  {
+    question: 'Do you offer same-day service?',
+    answer:
+      "For most plumbing jobs, yes. Call in the morning and we will often be there the same day. Emergencies are responded to 24/7.",
+  },
+  {
+    question: 'Are your prices fixed or hourly?',
+    answer:
+      "We provide fixed-price quotes for all work before we start. The price we quote is the price you pay. No hidden extras for travel, materials, or clean-up.",
+  },
+  {
+    question: 'Do you provide compliance certificates?',
+    answer:
+      "Yes. All plumbing and gas work comes with the required compliance certificates as per Victorian regulations.",
+  },
+  {
+    question: 'Can you work with my builder or renovator?',
+    answer:
+      "Absolutely. We coordinate with builders, tilers, and other trades regularly. Happy to work with your team or recommend trusted trades we know.",
+  },
+  {
+    question: 'What brands do you work with?',
+    answer:
+      "All major brands for hot water systems, tapware, and fixtures. Rinnai, Rheem, Bosch, Caroma, Grohe, and more. We recommend what works best for your situation, not what earns us the biggest margin.",
+  },
 ]
 
 export default function Services() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Plumbing Services Melbourne | Kovele Plumbing | 0418 340 501</title>
-        <meta
-          name="description"
-          content="Every plumbing service your home needs. Blocked drains, gas & hot water, roof plumbing, general plumbing, toilet repairs, and bathroom renovations across Melbourne."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/services" />
-        <meta property="og:title" content="Plumbing Services Melbourne | Kovele Plumbing | 0418 340 501" />
-        <meta property="og:description" content="Every plumbing service your home needs. Blocked drains, gas & hot water, roof plumbing, general plumbing, toilet repairs, and bathroom renovations across Melbourne." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/services" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Plumbing Services Melbourne | Kovele Plumbing | 0418 340 501"
+        description="Every plumbing service your home needs. Blocked drains, gas & hot water, roof plumbing, general plumbing, toilet repairs, and bathroom renovations across Melbourne."
+        canonical="/services"
+        image="/images/plumbing-services-melbourne.webp"
+      />
+      <JsonLd
+        schemas={[
+          localBusinessSchema(),
+          serviceSchema(
+            "Plumbing Services Melbourne",
+            "Blocked drains, gas & hot water, roof plumbing, general plumbing, toilet repairs, and bathroom renovations across Melbourne.",
+            "https://koveleplumbing.com.au/services",
+          ),
+          faqSchema(SERVICES_FAQS),
+          breadcrumbSchema([
+            { name: "Home", url: "https://koveleplumbing.com.au" },
+            { name: "Services", url: "https://koveleplumbing.com.au/services" },
+          ]),
+        ]}
+      />
 
       <Hero
         variant="split"
@@ -135,41 +193,7 @@ export default function Services() {
         variant="with-rating"
       />
 
-      <FAQ
-        title="Plumbing services FAQs"
-        faqs={[
-          {
-            question: 'How do I know which service I need?',
-            answer:
-              "Call Steve and describe the problem. He will tell you exactly what is needed and give you a rough cost estimate over the phone. No obligation.",
-          },
-          {
-            question: 'Do you offer same-day service?',
-            answer:
-              "For most plumbing jobs, yes. Call in the morning and we will often be there the same day. Emergencies are responded to 24/7.",
-          },
-          {
-            question: 'Are your prices fixed or hourly?',
-            answer:
-              "We provide fixed-price quotes for all work before we start. The price we quote is the price you pay. No hidden extras for travel, materials, or clean-up.",
-          },
-          {
-            question: 'Do you provide compliance certificates?',
-            answer:
-              "Yes. All plumbing and gas work comes with the required compliance certificates as per Victorian regulations.",
-          },
-          {
-            question: 'Can you work with my builder or renovator?',
-            answer:
-              "Absolutely. We coordinate with builders, tilers, and other trades regularly. Happy to work with your team or recommend trusted trades we know.",
-          },
-          {
-            question: 'What brands do you work with?',
-            answer:
-              "All major brands for hot water systems, tapware, and fixtures. Rinnai, Rheem, Bosch, Caroma, Grohe, and more. We recommend what works best for your situation, not what earns us the biggest margin.",
-          },
-        ]}
-      />
+      <FAQ title="Plumbing services FAQs" faqs={SERVICES_FAQS} />
 
       <ServiceArea
         title="Where we work"

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -53,18 +53,12 @@ const BATHROOM_RENO_FAQS = [
 export default function BathroomRenovations() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Bathroom Renovations Melbourne | Plumbing Specialists | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content="150+ bathroom renovations completed across Melbourne. Full plumbing rough-in, fixture installation, waterproofing, and compliance certificates. Call Steve on 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/bathroom-renovations" />
-        <meta property="og:title" content="Bathroom Renovations Melbourne | Plumbing Specialists | Kovele Plumbing" />
-        <meta property="og:description" content="150+ bathroom renovations completed across Melbourne. Full plumbing rough-in, fixture installation, waterproofing, and compliance certificates. Call Steve on 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/bathroom-renovations" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Bathroom Renovations Melbourne | Plumbing Specialists | Kovele Plumbing"
+        description="150+ bathroom renovations completed across Melbourne. Full plumbing rough-in, fixture installation, waterproofing, and compliance certificates. Call Steve on 0418 340 501."
+        canonical="/bathroom-renovations"
+        image="/images/bathroom-renovation-plumber-melbourne.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

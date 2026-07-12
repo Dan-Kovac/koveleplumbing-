@@ -92,6 +92,19 @@ export function Navbar({
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Visible, readable number in the sticky bar. The topbar phone
+                scrolls away; desktop callers need to *read* the number (their
+                tel: click can't open a dialer). */}
+            {topbar?.phone && (
+              <a
+                href={`tel:${topbar.phone.replace(/\s/g, '')}`}
+                data-cta="nav_bar_phone"
+                className="hidden items-center gap-1.5 font-heading text-lg font-bold text-brand-primary transition-colors hover:text-brand-secondary lg:inline-flex"
+              >
+                <Phone className="h-4 w-4" />
+                {topbar.phone}
+              </a>
+            )}
             {cta && (
               <Button
                 className="hidden bg-brand-accent text-white shadow-sm hover:bg-brand-accent/90 sm:inline-flex"

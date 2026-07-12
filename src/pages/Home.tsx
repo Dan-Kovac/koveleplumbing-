@@ -1,7 +1,8 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
+  websiteSchema,
   breadcrumbSchema,
 } from '@/components/seo/JsonLd'
 import {
@@ -117,21 +118,16 @@ const PROCESS_STEPS = [
 export default function Home() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Kovele Plumbing | Melbourne Plumbers You Can Trust | 0418 340 501</title>
-        <meta
-          name="description"
-          content="Steve and Nick Kovac, father-son plumbers with 40+ years experience. Blocked drains, hot water, roof plumbing, bathroom renovations. Call 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au" />
-        <meta property="og:title" content="Kovele Plumbing | Melbourne Plumbers You Can Trust | 0418 340 501" />
-        <meta property="og:description" content="Steve and Nick Kovac, father-son plumbers with 40+ years experience. Blocked drains, hot water, roof plumbing, bathroom renovations. Call 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Kovele Plumbing | Melbourne Plumbers You Can Trust | 0418 340 501"
+        description="Steve and Nick Kovac, father-son plumbers with 40+ years experience. Blocked drains, hot water, roof plumbing, bathroom renovations. Call 0418 340 501."
+        canonical="/"
+        image="/images/steve-nick-kovele-fleet.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),
+          websiteSchema(),
           breadcrumbSchema([
             { name: "Home", url: "https://koveleplumbing.com.au" },
           ]),

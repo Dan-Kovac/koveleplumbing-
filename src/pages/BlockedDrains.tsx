@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -63,18 +63,12 @@ const BLOCKED_DRAINS_FAQS = [
 export default function BlockedDrains() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Blocked Drain Repair Melbourne | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content="Same-day blocked drain repair in Melbourne. CCTV inspection, jet blasting, pipe relining, and tree root removal. Call Steve on 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/blocked-drains" />
-        <meta property="og:title" content="Blocked Drain Repair Melbourne | Kovele Plumbing" />
-        <meta property="og:description" content="Same-day blocked drain repair in Melbourne. CCTV inspection, jet blasting, pipe relining, and tree root removal. Call Steve on 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/blocked-drains" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Blocked Drain Repair Melbourne | Kovele Plumbing"
+        description="Same-day blocked drain repair in Melbourne. CCTV inspection, jet blasting, pipe relining, and tree root removal. Call Steve on 0418 340 501."
+        canonical="/blocked-drains"
+        image="/images/blocked-drain-repair-melbourne.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

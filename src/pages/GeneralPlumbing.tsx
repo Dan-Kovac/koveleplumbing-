@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -63,18 +63,12 @@ const GENERAL_PLUMBING_FAQS = [
 export default function GeneralPlumbing() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>General Plumber Melbourne | Leak Repairs & Pipe Fixes | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content="General plumbing services across Melbourne. Tap repairs, pipe fixes, leak detection, water pressure issues. 40+ years experience. Call Steve on 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/general-plumbing" />
-        <meta property="og:title" content="General Plumber Melbourne | Leak Repairs & Pipe Fixes | Kovele Plumbing" />
-        <meta property="og:description" content="General plumbing services across Melbourne. Tap repairs, pipe fixes, leak detection, water pressure issues. 40+ years experience. Call Steve on 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/general-plumbing" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="General Plumber Melbourne | Leak Repairs & Pipe Fixes | Kovele Plumbing"
+        description="General plumbing services across Melbourne. Tap repairs, pipe fixes, leak detection, water pressure issues. 40+ years experience. Call Steve on 0418 340 501."
+        canonical="/general-plumbing"
+        image="/images/general-plumber-melbourne.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

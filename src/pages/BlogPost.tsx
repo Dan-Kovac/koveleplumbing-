@@ -1,41 +1,66 @@
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
-import { ArrowLeft } from 'lucide-react'
+import { useParams, Link } from 'react-router-dom'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Container } from '@/components/layout/Container'
 import { CTABanner } from '@/components/sections/CTABanner'
+import { Seo } from '@/components/seo/Seo'
+import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/seo/JsonLd'
 
 import { BLOG_POSTS_FALLBACK } from '@/data/blog-fallback'
 import { BLOG_BODIES } from '@/data/blog-bodies'
 
+/** Map each post category to the most relevant service page for internal linking. */
+const CATEGORY_SERVICE: Record<string, { href: string; label: string }> = {
+  Emergency: { href: '/emergency-plumber', label: 'Emergency plumber Melbourne' },
+  Drains: { href: '/blocked-drains', label: 'Blocked drain repair Melbourne' },
+  'Hot Water': { href: '/gas-hot-water', label: 'Gas & hot water systems' },
+  Renovations: { href: '/bathroom-renovations', label: 'Bathroom renovations Melbourne' },
+  Advice: { href: '/services', label: 'All plumbing services' },
+  Education: { href: '/services', label: 'All plumbing services' },
+}
+
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
-  const navigate = useNavigate()
 
   const fallbackPost = BLOG_POSTS_FALLBACK.find((p) => p.slug === slug)
 
   if (fallbackPost) {
+    const relatedService = CATEGORY_SERVICE[fallbackPost.category] ?? CATEGORY_SERVICE.Advice
     return (
       <PageLayout>
-        <Helmet>
-          <title>{fallbackPost.title} | Kovele Plumbing Blog</title>
-          <meta name="description" content={fallbackPost.excerpt} />
-          <link rel="canonical" href={`https://koveleplumbing.com.au/blog/${fallbackPost.slug}`} />
-          <meta property="og:title" content={`${fallbackPost.title} | Kovele Plumbing Blog`} />
-          <meta property="og:description" content={fallbackPost.excerpt} />
-          <meta property="og:url" content={`https://koveleplumbing.com.au/blog/${fallbackPost.slug}`} />
-          <meta property="og:type" content="website" />
-        </Helmet>
+        <Seo
+          title={`${fallbackPost.title} | Kovele Plumbing Blog`}
+          description={fallbackPost.excerpt}
+          canonical={`/blog/${fallbackPost.slug}`}
+          image={fallbackPost.image}
+          type="article"
+        />
+        <JsonLd
+          schemas={[
+            articleSchema({
+              title: fallbackPost.title,
+              description: fallbackPost.excerpt,
+              url: `https://koveleplumbing.com.au/blog/${fallbackPost.slug}`,
+              image: `https://koveleplumbing.com.au${fallbackPost.image}`,
+              datePublished: fallbackPost.date,
+            }),
+            breadcrumbSchema([
+              { name: 'Home', url: 'https://koveleplumbing.com.au' },
+              { name: 'Blog', url: 'https://koveleplumbing.com.au/blog' },
+              { name: fallbackPost.title, url: `https://koveleplumbing.com.au/blog/${fallbackPost.slug}` },
+            ]),
+          ]}
+        />
 
         <article className="py-12 md:py-24 lg:py-32">
           <Container className="max-w-3xl">
-            <button
-              onClick={() => navigate('/blog')}
+            <Link
+              to="/blog"
               className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-brand-primary hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to blog
-            </button>
+            </Link>
 
             <div className="flex items-center gap-3 text-sm text-text-muted">
               <span className="rounded-full bg-brand-muted px-3 py-0.5 text-xs font-medium text-brand-primary">
@@ -84,6 +109,34 @@ export default function BlogPost() {
                 </>
               )}
             </div>
+
+            {/* Internal links: blog posts previously linked to nothing. Point
+                readers at the relevant service, emergency, and a local page. */}
+            <aside className="mt-12 rounded-xl border border-border/60 bg-surface-alt p-6">
+              <h2 className="font-heading text-lg font-semibold text-text-heading">
+                Need a plumber for this?
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                <li>
+                  <Link to={relatedService.href} className="inline-flex items-center gap-1.5 font-medium text-brand-primary hover:underline">
+                    <ArrowRight className="h-4 w-4" />
+                    {relatedService.label}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/emergency-plumber" className="inline-flex items-center gap-1.5 font-medium text-brand-primary hover:underline">
+                    <ArrowRight className="h-4 w-4" />
+                    24/7 emergency plumber Melbourne
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/plumber-bundoora" className="inline-flex items-center gap-1.5 font-medium text-brand-primary hover:underline">
+                    <ArrowRight className="h-4 w-4" />
+                    Find your local Kovele plumber
+                  </Link>
+                </li>
+              </ul>
+            </aside>
           </Container>
         </article>
 

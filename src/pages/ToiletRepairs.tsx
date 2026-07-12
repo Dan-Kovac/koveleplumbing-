@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import {
   JsonLd,
   localBusinessSchema,
@@ -63,18 +63,12 @@ const TOILET_REPAIRS_FAQS = [
 export default function ToiletRepairs() {
   return (
     <PageLayout>
-      <Helmet>
-        <title>Toilet Repairs Melbourne | Cistern & Blockage Fixes | Kovele Plumbing</title>
-        <meta
-          name="description"
-          content="Toilet repairs and installations in Melbourne. Running cisterns, blocked toilets, new installations, dual flush upgrades. Call Steve on 0418 340 501."
-        />
-        <link rel="canonical" href="https://koveleplumbing.com.au/toilet-repairs" />
-        <meta property="og:title" content="Toilet Repairs Melbourne | Cistern & Blockage Fixes | Kovele Plumbing" />
-        <meta property="og:description" content="Toilet repairs and installations in Melbourne. Running cisterns, blocked toilets, new installations, dual flush upgrades. Call Steve on 0418 340 501." />
-        <meta property="og:url" content="https://koveleplumbing.com.au/toilet-repairs" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo
+        title="Toilet Repairs Melbourne | Cistern & Blockage Fixes | Kovele Plumbing"
+        description="Toilet repairs and installations in Melbourne. Running cisterns, blocked toilets, new installations, dual flush upgrades. Call Steve on 0418 340 501."
+        canonical="/toilet-repairs"
+        image="/images/toilet-repair-plumber-melbourne.webp"
+      />
       <JsonLd
         schemas={[
           localBusinessSchema(),

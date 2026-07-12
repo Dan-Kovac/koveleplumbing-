@@ -5,9 +5,11 @@ import { Footer } from '@/components/sections/Footer'
 
 const NAV_LINKS = [
   { label: 'Services', href: '/services' },
+  { label: 'Emergency', href: '/emergency-plumber' },
   { label: 'About', href: '/about' },
   { label: 'Reviews', href: '/reviews' },
   { label: 'Blog', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
 
