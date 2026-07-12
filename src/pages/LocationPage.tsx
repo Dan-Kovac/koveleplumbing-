@@ -13,7 +13,9 @@ import {
   Bath,
   Siren,
 } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 import { PageLayout } from '@/components/layout/PageLayout'
+import { Container } from '@/components/layout/Container'
 import { Hero } from '@/components/sections/Hero'
 import { Stats } from '@/components/sections/Stats'
 import { ServiceCards } from '@/components/sections/ServiceCards'
@@ -24,28 +26,7 @@ import { FAQ } from '@/components/sections/FAQ'
 import { ServiceArea } from '@/components/sections/ServiceArea'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { PAGE_REVIEWS, toTestimonials } from '@/data/reviews'
-
-interface NearbySuburb {
-  name: string
-  slug: string
-  distance: string
-}
-
-interface LocationData {
-  suburb: string
-  slug: string
-  image: string
-  driveTime: string
-  jobCount: string
-  housingType: string
-  nearbySuburbs: NearbySuburb[]
-  testimonial: {
-    quote: string
-    name: string
-    role: string
-    initials: string
-  }
-}
+import type { LocationData } from '@/pages/locations/data'
 
 const SERVICES = [
   {
@@ -93,7 +74,7 @@ const SERVICES = [
 ]
 
 export function LocationPage({ data }: { data: LocationData }) {
-  const locationFaqs = [
+  const genericFaqs = [
     {
       question: `How quickly can you get to ${data.suburb}?`,
       answer: `We're based in Bundoora, about ${data.driveTime} from ${data.suburb}. For emergencies, we respond within 60 minutes on average. For scheduled work, we arrive on time. Always.`,
@@ -127,6 +108,9 @@ export function LocationPage({ data }: { data: LocationData }) {
       answer: "Cash, card (Visa, Mastercard), and bank transfer. We process card payments on-site with our mobile terminal.",
     },
   ]
+
+  // Suburb-specific FAQs lead, so each page's FAQ (and FAQPage schema) is unique.
+  const locationFaqs = [...data.localFaqs, ...genericFaqs]
 
   return (
     <PageLayout>
@@ -169,6 +153,36 @@ export function LocationPage({ data }: { data: LocationData }) {
         variant="inline"
       />
 
+      {/* Suburb-specific intro + common local plumbing issues — the unique,
+          non-templated content that makes each location page worth ranking. */}
+      <section className="py-14 md:py-16">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <h2 className="font-heading text-2xl font-bold text-text-heading md:text-3xl">
+                Plumbing in {data.suburb}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-text-DEFAULT md:text-lg">
+                {data.intro}
+              </p>
+            </div>
+            <div className="rounded-xl border border-border/60 bg-surface-alt p-6 md:p-8">
+              <h3 className="font-heading text-lg font-semibold text-text-heading">
+                Common {data.suburb} plumbing jobs
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {data.localIssues.map((issue) => (
+                  <li key={issue} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-primary" />
+                    <span className="text-sm leading-relaxed text-text-DEFAULT md:text-base">{issue}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       <ServiceCards
         variant="minimal"
         title={`Plumbing services in ${data.suburb}`}
@@ -194,7 +208,7 @@ export function LocationPage({ data }: { data: LocationData }) {
       <Testimonials
         title={`What ${data.suburb} customers say`}
         testimonials={[
-          { ...data.testimonial, rating: 5 },
+          ...(data.testimonial ? [{ ...data.testimonial, rating: 5 }] : []),
           ...toTestimonials(PAGE_REVIEWS),
         ]}
         variant="with-rating"

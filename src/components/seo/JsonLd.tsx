@@ -54,6 +54,7 @@ export function localBusinessSchema() {
     },
     "areaServed": [
       "Bundoora",
+      "Preston",
       "Heidelberg",
       "Reservoir",
       "Thornbury",

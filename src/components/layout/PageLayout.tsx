@@ -30,6 +30,7 @@ const FOOTER_LINKS = [
     title: 'Service Areas',
     links: [
       { label: 'Bundoora', href: '/plumber-bundoora' },
+      { label: 'Preston', href: '/plumber-preston' },
       { label: 'Brunswick', href: '/plumber-brunswick' },
       { label: 'Thornbury', href: '/plumber-thornbury' },
       { label: 'Northcote', href: '/plumber-northcote' },

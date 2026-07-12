@@ -97,6 +97,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://koveleplumbing.com.au/plumber-preston</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://koveleplumbing.com.au/plumber-templestowe</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -127,12 +133,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://koveleplumbing.com.au/plumber-coburg</loc>
-    <lastmod>2026-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://koveleplumbing.com.au/plumber-fitzroy-north</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -140,6 +140,12 @@
   </url>
   <url>
     <loc>https://koveleplumbing.com.au/plumber-brunswick</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://koveleplumbing.com.au/plumber-coburg</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

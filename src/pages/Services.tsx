@@ -200,6 +200,7 @@ export default function Services() {
         subtitle="Based in Bundoora, servicing all of Melbourne."
         areas={[
           { name: 'Bundoora', href: '/plumber-bundoora', distance: '5 min', popularService: 'General plumbing' },
+          { name: 'Preston', href: '/plumber-preston', distance: '10 min', popularService: 'Blocked drains' },
           { name: 'Heidelberg', href: '/plumber-heidelberg', distance: '10 min', popularService: 'Roof plumbing' },
           { name: 'Reservoir', href: '/plumber-reservoir', distance: '10 min', popularService: 'Blocked drains' },
           { name: 'Thornbury', href: '/plumber-thornbury', distance: '15 min', popularService: 'Gas fitting' },

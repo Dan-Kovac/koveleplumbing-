@@ -208,6 +208,7 @@ export default function EmergencyPlumber() {
         subtitle="Based in Bundoora. Fast emergency response across all of Melbourne."
         areas={[
           { name: 'Bundoora', href: '/plumber-bundoora', distance: '5 min', popularService: 'Burst pipes' },
+          { name: 'Preston', href: '/plumber-preston', distance: '10 min', popularService: 'Burst pipes' },
           { name: 'Heidelberg', href: '/plumber-heidelberg', distance: '10 min', popularService: 'Gas leaks' },
           { name: 'Reservoir', href: '/plumber-reservoir', distance: '10 min', popularService: 'Flooding' },
           { name: 'Thornbury', href: '/plumber-thornbury', distance: '15 min', popularService: 'Burst pipes' },
