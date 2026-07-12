@@ -5,21 +5,14 @@ import {
   websiteSchema,
   breadcrumbSchema,
 } from '@/components/seo/JsonLd'
-import {
-  Droplets,
-  Flame,
-  Home as HomeIcon,
-  Wrench,
-  Bath,
-} from 'lucide-react'
-
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Hero } from '@/components/sections/Hero'
 import { Stats } from '@/components/sections/Stats'
-import { ServiceCards } from '@/components/sections/ServiceCards'
+import { ServicesList } from '@/components/sections/ServicesList'
 import { FeatureSplit } from '@/components/sections/FeatureSplit'
 import { Process } from '@/components/sections/Process'
 import { ReviewsAggregate } from '@/components/sections/ReviewsAggregate'
+import { SuburbTicker } from '@/components/sections/SuburbTicker'
 import { CTABanner } from '@/components/sections/CTABanner'
 import {
   HOMEPAGE_REVIEWS,
@@ -33,57 +26,6 @@ const STATS = [
   { value: '246', label: 'Verified Reviews' },
   { value: '24/7', label: 'Emergency Service' },
   { value: '150+', label: 'Bathrooms Installed' },
-]
-
-const SERVICES = [
-  {
-    title: 'Blocked Drains',
-    excerpt: 'CCTV inspection and jet blasting. Same-day service.',
-    href: '/blocked-drains',
-    icon: <Droplets className="h-8 w-8" />,
-    image: '/images/blocked-drain-repair-melbourne.webp',
-    imageAlt: 'Blocked drain inspection with CCTV camera in Melbourne',
-  },
-  {
-    title: 'Gas & Hot Water',
-    excerpt: 'Licensed gas fitters. All brands serviced and installed.',
-    href: '/gas-hot-water',
-    icon: <Flame className="h-8 w-8" />,
-    image: '/images/hot-water-system-repair-melbourne.webp',
-    imageAlt: 'Steve and Nick testing gas fittings in Melbourne',
-  },
-  {
-    title: 'Roof Plumbing',
-    excerpt: 'Leak detection, gutter repairs, and roof flashing.',
-    href: '/roof-plumbing',
-    icon: <HomeIcon className="h-8 w-8" />,
-    image: '/images/roof-plumber-steve-melbourne.webp',
-    imageAlt: 'Roof plumber repairing flashing on Melbourne metal roof',
-  },
-  {
-    title: 'General Plumbing',
-    excerpt: 'Taps, pipes, leaks, and water pressure sorted.',
-    href: '/general-plumbing',
-    icon: <Wrench className="h-8 w-8" />,
-    image: '/images/general-plumber-melbourne.webp',
-    imageAlt: 'Steve and Nick fixing kitchen plumbing in Melbourne home',
-  },
-  {
-    title: 'Toilet Repairs',
-    excerpt: 'Cisterns, blockages, new installs, and upgrades.',
-    href: '/toilet-repairs',
-    icon: <Droplets className="h-8 w-8" />,
-    image: '/images/toilet-repair-plumber-melbourne.webp',
-    imageAlt: 'Nick Kovac repairing a toilet in Melbourne',
-  },
-  {
-    title: 'Bathroom Renovations',
-    excerpt: 'Full plumbing for your renovation. Start to finish.',
-    href: '/bathroom-renovations',
-    icon: <Bath className="h-8 w-8" />,
-    image: '/images/bathroom-renovation-plumber-melbourne.webp',
-    imageAlt: 'Bathroom renovation plumbing rough-in by Kovele Plumbing',
-  },
 ]
 
 const WHY_CHOOSE_ITEMS = [
@@ -145,12 +87,7 @@ export default function Home() {
 
       <Stats stats={STATS} variant="inline" />
 
-      <ServiceCards
-        variant="with-image"
-        title="Every plumbing service your home needs"
-        subtitle="From blocked drains to bathroom renovations. Whatever the job, we'll do it right."
-        services={SERVICES}
-      />
+      <ServicesList />
 
       <FeatureSplit
         title="Why Melbourne homeowners choose Kovele"
@@ -178,6 +115,8 @@ export default function Home() {
         platforms={REVIEW_PLATFORMS}
         reviews={HOMEPAGE_REVIEWS}
       />
+
+      <SuburbTicker />
 
       <CTABanner
         variant="personal"
