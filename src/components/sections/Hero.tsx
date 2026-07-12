@@ -66,13 +66,13 @@ export function Hero({
 }: HeroProps) {
   if (variant === 'split') {
     return (
-      <section className={cn('relative overflow-hidden bg-surface-dark', className)}>
-        {/* Single restrained radial for depth — no mesh gradient, no dot pattern. */}
+      <section className={cn('relative overflow-hidden bg-white', className)}>
+        {/* Light, airy ground — Kovele blue as a faint accent wash, not a fill. */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'radial-gradient(120% 90% at 85% 0%, rgba(61,155,233,0.10), transparent 55%)',
+              'radial-gradient(110% 80% at 88% 0%, rgba(61,155,233,0.07), transparent 55%)',
           }}
         />
 
@@ -82,8 +82,8 @@ export function Hero({
             <motion.div initial="hidden" animate="visible" className="py-16 md:py-20 lg:py-24">
               {badge && (
                 <motion.div custom={0} variants={fadeUp} className="mb-5 flex items-center gap-3">
-                  <span className="h-px w-8 bg-brand-gold/70" />
-                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/70">
+                  <span className="h-px w-8 bg-brand-accent" />
+                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-text-muted">
                     {badge}
                   </span>
                 </motion.div>
@@ -91,12 +91,12 @@ export function Hero({
               <motion.h1
                 custom={1}
                 variants={fadeUp}
-                className="font-heading text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl"
+                className="font-heading text-4xl font-bold tracking-tight text-text-heading md:text-5xl lg:text-6xl"
               >
                 {renderTitle(title, highlightWord)}
               </motion.h1>
               {subtitle && (
-                <motion.p custom={2} variants={fadeUp} className="mt-5 text-base leading-relaxed text-white/80 md:text-lg">
+                <motion.p custom={2} variants={fadeUp} className="mt-5 text-base leading-relaxed text-text-DEFAULT md:text-lg">
                   {subtitle}
                 </motion.p>
               )}
@@ -112,7 +112,7 @@ export function Hero({
                     </Button>
                   )}
                   {secondaryCta && (
-                    <Button size="lg" variant="outline" className="flex-1 rounded-lg border-white/20 text-white backdrop-blur-sm hover:bg-white/10 sm:flex-none" asChild>
+                    <Button size="lg" variant="outline" className="flex-1 rounded-lg border-brand-primary/40 text-brand-primary hover:bg-brand-primary/5 sm:flex-none" asChild>
                       <a href={secondaryCta.href} data-cta="hero_secondary">
                         {isTel(secondaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
                         {secondaryCta.label}
@@ -124,8 +124,8 @@ export function Hero({
               {primaryCta && isTel(primaryCta.href) && (
                 <motion.div custom={3.5} variants={fadeUp} className="mt-4">
                   <a href={primaryCta.href} data-cta="hero_phone_text" className="inline-flex items-baseline gap-2">
-                    <span className="text-sm text-white/70">Prefer to call?</span>
-                    <span className="font-heading text-2xl font-bold text-brand-gold">0418 340 501</span>
+                    <span className="text-sm text-text-muted">Prefer to call?</span>
+                    <span className="font-heading text-2xl font-bold text-brand-accent">0418 340 501</span>
                   </a>
                 </motion.div>
               )}
@@ -136,7 +136,7 @@ export function Hero({
                       <Star key={i} className="h-3 w-3 fill-brand-gold text-brand-gold sm:h-3.5 sm:w-3.5" />
                     ))}
                   </div>
-                  <span className="text-xs leading-tight text-white/75 sm:text-sm">{trustLine}</span>
+                  <span className="text-xs leading-tight text-text-muted sm:text-sm">{trustLine}</span>
                 </motion.div>
               )}
             </motion.div>
@@ -148,7 +148,7 @@ export function Hero({
               transition={{ duration: 0.7, delay: 0.2, ease }}
               className="relative hidden lg:flex lg:items-center"
             >
-              <div className="relative w-full overflow-hidden rounded-xl ring-1 ring-white/10 shadow-[0_35px_60px_-20px_rgba(0,0,0,0.6)]">
+              <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-[0_30px_60px_-25px_rgba(12,31,54,0.35)]">
                 {splitImage ? (
                   <img
                     src={splitImage}
@@ -169,9 +169,8 @@ export function Hero({
 
         {/* Mobile: photo below on small screens */}
         {splitImage && (
-          <div className="relative h-64 overflow-hidden lg:hidden">
-            <img src={splitImage} alt={splitImageAlt} fetchPriority="high" decoding="async" className="h-full w-full object-cover object-top" />
-            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-surface-dark to-transparent" />
+          <div className="relative mx-4 mb-10 overflow-hidden rounded-xl border border-border shadow-[0_20px_40px_-24px_rgba(12,31,54,0.35)] lg:hidden">
+            <img src={splitImage} alt={splitImageAlt} fetchPriority="high" decoding="async" className="aspect-[4/3] w-full object-cover" />
           </div>
         )}
       </section>

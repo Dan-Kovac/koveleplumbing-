@@ -98,19 +98,15 @@ const WHY_CHOOSE_ITEMS = [
 const PROCESS_STEPS = [
   {
     title: 'Call Steve',
-    description: 'Ring 0418 340 501. Steve or Nick will answer and ask what\'s going on.',
+    description: 'Ring 0418 340 501. Steve or Nick answers and asks what\'s going on.',
   },
   {
-    title: 'Get a clear quote',
-    description: 'We explain what needs doing and tell you exactly what it\'ll cost.',
+    title: 'Get a clear, fixed quote',
+    description: 'We explain what needs doing and tell you exactly what it\'ll cost. No surprises.',
   },
   {
     title: 'We fix it right',
-    description: 'We turn up on time, do the work properly, and clean up after.',
-  },
-  {
-    title: 'Pay a fair price',
-    description: 'You pay what we quoted. No hidden charges. That\'s it.',
+    description: 'We turn up on time, do the work properly, clean up after — and you pay exactly what we quoted.',
   },
 ]
 
@@ -168,7 +164,7 @@ export default function Home() {
 
       <Process
         title="How it works"
-        subtitle="Four simple steps from problem to fixed."
+        subtitle="Three simple steps from problem to fixed."
         steps={PROCESS_STEPS}
         variant="numbered"
         dark
