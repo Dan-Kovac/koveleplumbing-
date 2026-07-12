@@ -74,11 +74,47 @@ const SERVICES = [
 ]
 
 export function LocationPage({ data }: { data: LocationData }) {
+  // Bundoora is our home base, so the "X minutes from Bundoora" template reads
+  // wrong there. Swap in "we live here" copy for the base suburb.
+  const isBase = data.isBase === true
+
+  const heroSubtitle = isBase
+    ? `This is home. We've been based in Bundoora for over 30 years — when you call Kovele, you're calling the plumber who actually lives in your suburb. Steve and Nick, 40 years on the tools.`
+    : `Based in Bundoora, just ${data.driveTime} from ${data.suburb}. Steve and Nick have been looking after ${data.suburb} homes for over 40 years.`
+
+  const seoDescription = isBase
+    ? `Your local Bundoora plumber, based right here for over 30 years. Steve and Nick Kovac, 40 years on the tools. ${data.jobCount} local jobs completed. Call 0418 340 501.`
+    : `Your trusted plumber in ${data.suburb}. Based in Bundoora, ${data.driveTime} from ${data.suburb}. ${data.jobCount} jobs completed. Call Steve on 0418 340 501.`
+
+  const trustLine = isBase
+    ? `${data.jobCount} jobs completed right here in Bundoora`
+    : `${data.jobCount} jobs completed in ${data.suburb}`
+
+  const baseStat = isBase
+    ? { value: '30+', label: 'Years in Bundoora' }
+    : { value: data.driveTime, label: 'From Our Base' }
+
+  const responseItem = isBase
+    ? 'Local plumbers who actually live in Bundoora — the fastest response in the suburb'
+    : `Fast response, just ${data.driveTime} from our Bundoora base`
+
+  const showUpDescription = isBase
+    ? `We're based right here in Bundoora, so we're rarely more than a few minutes away. We arrive when we say we will, with the right tools for the job.`
+    : `Just ${data.driveTime} from our Bundoora base. We arrive when we say we will, with the right tools for the job.`
+
+  const reachFaq = isBase
+    ? {
+        question: 'Do you really live in Bundoora?',
+        answer:
+          "Yes. Kovele Plumbing is based on Greenstone Place in Bundoora, and Steve has lived and worked in the area for over 30 years. When you call, you're getting a genuine local who knows the suburb — and its plumbing — inside out.",
+      }
+    : {
+        question: `How quickly can you get to ${data.suburb}?`,
+        answer: `We're based in Bundoora, about ${data.driveTime} from ${data.suburb}. For emergencies, we respond within 60 minutes on average. For scheduled work, we arrive on time. Always.`,
+      }
+
   const genericFaqs = [
-    {
-      question: `How quickly can you get to ${data.suburb}?`,
-      answer: `We're based in Bundoora, about ${data.driveTime} from ${data.suburb}. For emergencies, we respond within 60 minutes on average. For scheduled work, we arrive on time. Always.`,
-    },
+    reachFaq,
     {
       question: `Do you service ${data.suburb} regularly?`,
       answer: `${data.suburb} is one of our core service areas. We've completed ${data.jobCount} jobs in the area and know the local housing stock well.`,
@@ -116,7 +152,7 @@ export function LocationPage({ data }: { data: LocationData }) {
     <PageLayout>
       <Seo
         title={`Plumber ${data.suburb} | Trusted Local Plumber | Kovele Plumbing`}
-        description={`Your trusted plumber in ${data.suburb}. Based in Bundoora, ${data.driveTime} from ${data.suburb}. ${data.jobCount} jobs completed. Call Steve on 0418 340 501.`}
+        description={seoDescription}
         canonical={`/${data.slug}`}
         image={data.image}
       />
@@ -134,20 +170,20 @@ export function LocationPage({ data }: { data: LocationData }) {
       <Hero
         variant="split"
         title={`Your trusted plumber in ${data.suburb}.`}
-        subtitle={`Based in Bundoora, just ${data.driveTime} from ${data.suburb}. Steve and Nick have been looking after ${data.suburb} homes for over 40 years.`}
+        subtitle={heroSubtitle}
         primaryCta={{ label: 'Request a Callback', href: '/contact' }}
         secondaryCta={{ label: 'Call Now', href: 'tel:0418340501' }}
         splitImage={data.image}
         splitImageAlt={`Plumber in ${data.suburb}, Kovele Plumbing`}
         highlightWord={data.suburb}
-        trustLine={`${data.jobCount} jobs completed in ${data.suburb}`}
+        trustLine={trustLine}
       />
 
       <Stats
         stats={[
           { value: data.jobCount, label: `Jobs in ${data.suburb}` },
           { value: '4.9★', label: 'Average Rating' },
-          { value: data.driveTime, label: 'From Our Base' },
+          baseStat,
           { value: '40+', label: 'Years Experience' },
         ]}
         variant="inline"
@@ -196,7 +232,7 @@ export function LocationPage({ data }: { data: LocationData }) {
         image="/images/kovele-plumbing-team-melbourne.webp"
         imageAlt="Steve and Nick Kovac, Kovele Plumbing"
         items={[
-          `Fast response, just ${data.driveTime} from our Bundoora base`,
+          responseItem,
           `Deep knowledge of ${data.suburb}'s ${data.housingType}`,
           'Upfront pricing. You know the cost before we start',
           'Same-day service for most jobs',
@@ -225,8 +261,7 @@ export function LocationPage({ data }: { data: LocationData }) {
           },
           {
             title: 'We show up on time',
-            description:
-              `Just ${data.driveTime} from our Bundoora base. We arrive when we say we will, with the right tools for the job.`,
+            description: showUpDescription,
           },
           {
             title: 'Fixed price before we start',

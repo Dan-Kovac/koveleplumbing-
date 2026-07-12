@@ -11,6 +11,9 @@ export interface LocationData {
   driveTime: string
   jobCount: string
   housingType: string
+  /** True for our home suburb (Bundoora) — swaps in "we live here" copy instead
+      of the "X minutes from Bundoora" template, which reads wrong for the base. */
+  isBase?: boolean
   /** 2-3 sentences on the suburb's housing stock and its plumbing implications. */
   intro: string
   /** Plumbing problems specific to this suburb's homes. */
@@ -35,8 +38,9 @@ export const LOCATIONS: LocationData[] = [
     driveTime: '5 minutes',
     jobCount: '500+',
     housingType: 'post-war brick homes and modern townhouses',
+    isBase: true,
     intro:
-      "Bundoora is our home base — we're on Greenstone Place, so we're usually at your door faster here than anywhere else. The suburb is a mix of 1950s-70s brick veneers and the newer townhouse developments around La Trobe. The older homes are hitting the age where galvanised pipes corrode and original hot water systems give out; the townhouses bring their own connection and metering jobs.",
+      "Bundoora isn't just our service area — it's home. Steve has lived and worked here for over 30 years, and the business runs out of Greenstone Place, so when a Bundoora job comes in we're usually there in minutes. The suburb is a mix of 1950s-70s brick veneers and the newer townhouse developments around La Trobe: the older homes are at the age where galvanised pipes corrode and original hot water systems give out, while the townhouses bring their own connection and metering work. There's no plumber who knows Bundoora better, because we live here.",
     localIssues: [
       'Corroded galvanised water pipes in post-war homes causing low pressure and rusty water',
       'Original hot water systems from the 80s and 90s reaching the end of their life',
