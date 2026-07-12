@@ -44,14 +44,18 @@
 @theme {
   --color-brand-primary: #3d9be9;
   --color-brand-secondary: #2780c8;
-  --color-brand-accent: #c2410c;
-  --color-brand-accent-hover: #a3360a;
-  --color-brand-gold: #DAA520;
-  --color-brand-muted: #f0f6fd;
+  /* Refined brass-gold for CTAs (was a burnt orange #c2410c that read "tradie").
+     Deep enough to hold white text at AA-large; on-brand with the Kovele gold. */
+  --color-brand-accent: #b3801e;
+  --color-brand-accent-hover: #977019;
+  --color-brand-gold: #c79a3e;
+  --color-brand-muted: #eef1f5;
   --color-brand-foreground: #ffffff;
 
   --color-surface: #ffffff;
-  --color-surface-alt: #f8fafb;
+  /* Warm stone off-white for alternating light sections — replaces the cold
+     pale-blue washes that made everything feel monochrome-blue. */
+  --color-surface-alt: #f6f4ef;
   --color-surface-dark: #0c1f36;
 
   --color-text-DEFAULT: #3b4559;
@@ -59,7 +63,7 @@
   --color-text-muted: #6b7a8d;
   --color-text-inverse: #f9fafb;
 
-  --color-border: #e2e8f0;
+  --color-border: #e7e4dd;
 
   --color-gradient-from: #0c1f36;
   --color-gradient-via: #1a4a7a;
@@ -87,8 +91,9 @@ html { scroll-behavior: smooth; }
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--color-text-heading);
+    letter-spacing: -0.02em;
   }
 }
 

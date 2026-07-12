@@ -42,7 +42,7 @@ export function ServiceCards({
 }: ServiceCardsProps) {
   if (variant === 'minimal') {
     return (
-      <section className={cn('bg-brand-muted py-14 md:py-16', className)}>
+      <section className={cn('bg-surface-alt py-20 md:py-24', className)}>
         <Container>
           <ScrollReveal>
             <RevealItem>
@@ -83,7 +83,7 @@ export function ServiceCards({
   }
 
   return (
-    <section className={cn('bg-brand-muted py-14 md:py-16', className)}>
+    <section className={cn('bg-surface-alt py-20 md:py-24', className)}>
       <Container>
         <ScrollReveal>
           <RevealItem>
@@ -98,7 +98,7 @@ export function ServiceCards({
             {services.map((service) => (
               <RevealItem key={service.title}>
                 <a href={service.href || '#'} className="group block h-full">
-                  <div className="h-full overflow-hidden rounded-xl border border-border/50 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl hover:shadow-brand-primary/10">
+                  <div className="h-full overflow-hidden rounded-xl border border-border bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/40 hover:shadow-[0_20px_40px_-24px_rgba(12,31,54,0.35)]">
                     {/* Image area — flush to card edges, no gap */}
                     <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-brand-primary/15 via-brand-accent/15 to-brand-primary/8">
                       {service.image ? (

@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/button'
-import { GradientOrb } from '@/components/ui/gradient-orb'
 import { ArrowRight, Phone, Star } from 'lucide-react'
 
 interface HeroProps {
@@ -67,21 +66,24 @@ export function Hero({
 }: HeroProps) {
   if (variant === 'split') {
     return (
-      <section className={cn('relative overflow-hidden bg-mesh', className)}>
-        {/* Dot pattern overlay */}
-        <div className="bg-dot-pattern-light pointer-events-none absolute inset-0" />
-
-        {/* Gradient orbs at opposing corners */}
-        <GradientOrb color="primary" size="xl" className="-left-40 -top-40" />
-        <GradientOrb color="accent" size="lg" className="-bottom-32 -right-32" />
+      <section className={cn('relative overflow-hidden bg-surface-dark', className)}>
+        {/* Single restrained radial for depth — no mesh gradient, no dot pattern. */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(120% 90% at 85% 0%, rgba(61,155,233,0.10), transparent 55%)',
+          }}
+        />
 
         <Container className="relative z-10">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Text column */}
             <motion.div initial="hidden" animate="visible" className="py-16 md:py-20 lg:py-24">
               {badge && (
-                <motion.div custom={0} variants={fadeUp} className="mb-4">
-                  <span className="glass-dark inline-block rounded-full border border-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/80">
+                <motion.div custom={0} variants={fadeUp} className="mb-5 flex items-center gap-3">
+                  <span className="h-px w-8 bg-brand-gold/70" />
+                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/70">
                     {badge}
                   </span>
                 </motion.div>
@@ -101,7 +103,7 @@ export function Hero({
               {(primaryCta || secondaryCta) && (
                 <motion.div custom={3} variants={fadeUp} className="mt-8 flex items-center gap-3">
                   {primaryCta && (
-                    <Button size="lg" className="glow-accent flex-1 rounded-lg bg-brand-accent px-5 text-white hover:bg-brand-accent-hover sm:flex-none sm:px-7" asChild>
+                    <Button size="lg" className="flex-1 rounded-lg bg-brand-accent px-5 text-white hover:bg-brand-accent-hover sm:flex-none sm:px-7" asChild>
                       <a href={primaryCta.href} data-cta="hero_primary">
                         {isTel(primaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
                         {primaryCta.label}
@@ -146,9 +148,7 @@ export function Hero({
               transition={{ duration: 0.7, delay: 0.2, ease }}
               className="relative hidden lg:flex lg:items-center"
             >
-              {/* Orb behind the image */}
-              <GradientOrb color="accent" size="lg" className="-right-16 -top-16 opacity-20" />
-              <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+              <div className="relative w-full overflow-hidden rounded-xl ring-1 ring-white/10 shadow-[0_35px_60px_-20px_rgba(0,0,0,0.6)]">
                 {splitImage ? (
                   <img
                     src={splitImage}
@@ -220,7 +220,7 @@ export function Hero({
         {(primaryCta || secondaryCta) && (
           <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {primaryCta && (
-              <Button size="lg" className="glow-accent rounded-lg bg-brand-accent px-7 text-white hover:bg-brand-accent-hover" asChild>
+              <Button size="lg" className="rounded-lg bg-brand-accent px-7 text-white hover:bg-brand-accent-hover" asChild>
                 <a href={primaryCta.href} data-cta="hero_primary">
                   {isTel(primaryCta.href) && <Phone className="mr-2 h-4 w-4" />}
                   {primaryCta.label}

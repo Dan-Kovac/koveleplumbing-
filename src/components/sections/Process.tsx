@@ -2,7 +2,6 @@ import { type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/layout/Container'
 import { ScrollReveal, RevealItem } from '@/components/layout/ScrollReveal'
-import { GradientOrb } from '@/components/ui/gradient-orb'
 
 interface Step {
   title: string
@@ -28,20 +27,7 @@ export function Process({
   className,
 }: ProcessProps) {
   return (
-    <section className={cn('relative overflow-hidden py-16 md:py-20', dark ? 'bg-mesh' : '', className)}>
-      {/* Background effects for dark mode */}
-      {dark && (
-        <>
-          <div className="bg-dot-pattern-light pointer-events-none absolute inset-0" />
-          <GradientOrb color="primary" size="xl" className="-right-48 -top-48 opacity-20" />
-        </>
-      )}
-
-      {/* Background effects for light mode */}
-      {!dark && (
-        <div className="bg-grid-pattern pointer-events-none absolute inset-0 opacity-50" />
-      )}
-
+    <section className={cn('relative overflow-hidden py-20 md:py-28', dark ? 'bg-surface-dark' : '', className)}>
       <Container className="relative z-10">
         <ScrollReveal>
           <RevealItem className="mx-auto max-w-2xl text-center">
@@ -65,8 +51,10 @@ export function Process({
             return (
               <RevealItem key={step.title} className="text-center">
                 <div className={cn(
-                  'mx-auto flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold shadow-lg transition-transform duration-300 hover:scale-110',
-                  'bg-gradient-to-br from-[var(--color-gradient-from)] to-[var(--color-gradient-to)] text-white',
+                  'mx-auto flex h-12 w-12 items-center justify-center rounded-full font-heading text-base font-semibold',
+                  dark
+                    ? 'border border-brand-gold/45 text-brand-gold'
+                    : 'border border-brand-primary/35 text-brand-primary',
                 )}>
                   {variant === 'icon-steps' && Icon ? (
                     <Icon className="h-5 w-5" />
