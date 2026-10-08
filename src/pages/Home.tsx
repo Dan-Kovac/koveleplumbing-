@@ -15,6 +15,7 @@ import {
 
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Hero } from '@/components/sections/Hero'
+import { ReviewCarousel } from '@/components/reviews/ReviewCarousel'
 import { Stats } from '@/components/sections/Stats'
 import { ServiceCards } from '@/components/sections/ServiceCards'
 import { FeatureSplit } from '@/components/sections/FeatureSplit'
@@ -146,6 +147,8 @@ export default function Home() {
         trustLine="4.9★ from 246 verified reviews on Google & Service Seeking"
         highlightWord="right"
       />
+
+      <ReviewCarousel />
 
       <Stats stats={STATS} variant="inline" />
 

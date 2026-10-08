@@ -17,6 +17,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Container } from '@/components/layout/Container'
 import { Hero } from '@/components/sections/Hero'
+import { ReviewCarousel } from '@/components/reviews/ReviewCarousel'
 import { Stats } from '@/components/sections/Stats'
 import { ServiceCards } from '@/components/sections/ServiceCards'
 import { FeatureSplit } from '@/components/sections/FeatureSplit'
@@ -178,6 +179,8 @@ export function LocationPage({ data }: { data: LocationData }) {
         highlightWord={data.suburb}
         trustLine={trustLine}
       />
+
+      <ReviewCarousel />
 
       <Stats
         stats={[

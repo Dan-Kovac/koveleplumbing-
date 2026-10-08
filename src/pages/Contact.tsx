@@ -8,6 +8,7 @@ import {
 import { PageLayout } from '@/components/layout/PageLayout'
 import { Stats } from '@/components/sections/Stats'
 import { ContactSplit } from '@/components/sections/ContactSplit'
+import { ReviewCarousel } from '@/components/reviews/ReviewCarousel'
 import { FeatureSplit } from '@/components/sections/FeatureSplit'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { FAQ } from '@/components/sections/FAQ'
@@ -115,6 +116,8 @@ export default function Contact() {
           },
         ]}
       />
+
+      <ReviewCarousel />
 
       <Stats
         stats={[
